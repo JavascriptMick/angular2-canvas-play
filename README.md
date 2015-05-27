@@ -1,7 +1,9 @@
-ng2-play
-========
+Canvas written in Angular 2
+===========================
 
-The goal of this repo is to prepare a minimal ("walking skeleton") project build with Angular2.0 and ES6
+The goal of this repo is to offer up a simple working example of a multi-component application in Angular2.
+
+Based on https://github.com/pkozlowski-opensource/ng2-play
 
 ## Install
 

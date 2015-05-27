@@ -17,7 +17,7 @@ import Note from "Note";
 @View({
     template: `
     <h1>{{ canvasTitle }}</h1>    
-    <my-note *ng-for="#note of noteService.list" [note]="note" (updatenote)="handleNoteUpdate()"></my-note>
+    <my-note *ng-for="#note of noteService.list" [note]="note" (notechanged)="handleNoteChange(note)"></my-note>
     <ul><li *ng-for="#anote of noteService.list">{{anote.noteText}}</li></ul>
     `,
     directives: [NoteComponent, NgFor]
@@ -35,8 +35,8 @@ class CanvasComponent {
         this.noteService.add(new Note('one more note', 'green'));
     }
 
-    handleNoteUpdate(){
-        console.log('Note Updated.. I got the message!');
+    handleNoteChange(note){
+        this.noteService.update(note);
     }
 }
 

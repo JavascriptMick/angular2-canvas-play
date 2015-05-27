@@ -17,9 +17,14 @@ class NoteService {
   }
 
   add(note: Note) {
-    //TODO - add Note to backend store, decorate with id
     this.list.push(note);
+    console.log('TODO - add Note to backend store, decorate with id');
   }
+
+  update(note: Note){
+    console.log('TODO - Persist Note to backend')
+  }
+
 }
 
 export default NoteService;

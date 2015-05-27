@@ -1,6 +1,6 @@
 /// <reference path="../typings/angular2/angular2.d.ts" />
 
-import {ComponentAnnotation as Component, bootstrap, ViewAnnotation as View} from "angular2/angular2";
+import {ComponentAnnotation as Component, bootstrap, ViewAnnotation as View, EventEmitter} from "angular2/angular2";
 import Note from "Note";
 
 /**
@@ -10,6 +10,7 @@ import Note from "Note";
  */
 @Component({
     selector: 'my-note',
+    events: ['notechanged'],
     properties:{'note': 'note'}
 })
 @View({
@@ -17,9 +18,11 @@ import Note from "Note";
 })
 class NoteComponent {
     note: Note;
+    notechanged: EventEmitter;
 
     constructor() {
       this.note = new Note("Default Note", "yellow");
+      this.notechanged = new EventEmitter();
     }
 
     get noteClass() : string {
@@ -27,8 +30,8 @@ class NoteComponent {
     }
 
     handleBlur($event, inputElement){
-      console.log('blur occur' + inputElement.value);
       this.note.noteText = inputElement.value;
+      this.notechanged.next('notechanged');
     }
 }
 
