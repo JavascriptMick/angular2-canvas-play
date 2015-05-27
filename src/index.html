@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- ES6-related imports -->
+    <script src="lib/traceur-runtime.js"></script>
+    <script src="lib/es6-module-loader-sans-promises.src.js"></script>
+    <script src="lib/extension-register.js"></script>
+    <script>
+        register(System);
+    </script>
+    <script src="lib/Reflect.js"></script>
+
+    <!-- Angular2-related imports -->
+    <script src="lib/zone.js"></script>
+    <script src="lib/long-stack-trace-zone.js"></script>
+    <script src="lib/angular2.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/canvas.css">
+</head>
+<body>
+    <my-canvas>Loading ....</my-canvas>
+</body>
+
+<!-- Application bootstrap logic -->
+<script>
+    System.import('CanvasComponent').catch(console.log.bind(console));
+</script>
+
+</html>
