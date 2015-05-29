@@ -18,7 +18,7 @@ import Note from "Note";
 })
 class NoteComponent {
     note: Note;
-    notechanged: EventEmitter;
+    notechanged: EventEmitter;  //the local needs to be the same name as the event... stoopid
 
     constructor() {
       this.note = new Note("Default Note", "yellow");
