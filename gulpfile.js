@@ -3,9 +3,11 @@ var del = require('del');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var traceur = require('gulp-traceur');
+var sourcemaps = require('gulp-sourcemaps');
 
 var PATHS = {
     src: {
+      root: 'src',
       js: 'src/**/*.js',
       html: 'src/**/*.html',
       css: 'src/**/*.css'
@@ -28,7 +30,9 @@ gulp.task('js', function () {
     return gulp.src(PATHS.src.js)
         .pipe(rename({extname: ''})) //hack, see: https://github.com/sindresorhus/gulp-traceur/issues/54
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(traceur({
+            sourceMaps: true,
             modules: 'instantiate',
             moduleName: true,
             annotations: true,
@@ -36,6 +40,7 @@ gulp.task('js', function () {
             memberVariables: true
         }))
         .pipe(rename({extname: '.js'})) //hack, see: https://github.com/sindresorhus/gulp-traceur/issues/54
+        .pipe(sourcemaps.write('.', {sourceRoot: PATHS.src.root}))
         .pipe(gulp.dest('dist'));
 });
 
